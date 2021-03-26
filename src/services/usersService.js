@@ -3,13 +3,11 @@ import axios from 'axios';
 const URL = 'http://localhost:8000';
 const USERS = 'users';
 
-export const addNewUser = (Name, password, incidence, operator, date) => {
+export const addNewUser = (Name, password) => {
   return axios.post(`${URL}/${USERS} `, {
     Name,
     password,
-    incidence,
-    operator,
-    date,
+   
   });
 };
 

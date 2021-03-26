@@ -1,0 +1,33 @@
+.icon {
+  margin-right: 10px;
+}
+.icon:hover {
+  color: red;
+}
+.icon2:hover {
+  color: rgb(104, 104, 104);
+}
+
+.btnEnviar {
+  margin-right: 10%;
+}
+
+.btnEnviar:hover {
+  background: #8c8c8c;
+  color: white;
+}
+.iconLogOut{
+margin: 20px;
+}
+/* DOES NOT WORK - not specific enough */
+.alert-wrapper {
+  background: #929191;
+}
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .alert-wrapper {
+  background: #e5e5e5;
+}
+.my-custom-class {
+  --background: #0f0f0f;
+}

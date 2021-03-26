@@ -6,30 +6,14 @@ import {
   } from 'react-router-dom';
  
   import '../theme/variables.css';
-  import { AppRegister } from '../components/AppRegister';
-  import { AppIncidence, AppIncspections } from '../components/AppIncidence';
-import AppLogin from '../components/AppLogin';
-import { AppFormHigh } from '../components/AppFormHigh';
-import { AppDetails } from '../components/AppDetails';
+  import { AppRegister } from '../components/component/AppRegister';
+  import { AppIncidence } from '../components/component/AppIncidence';
+import AppLogin from '../components/component/AppLogin';
+import { AppFormHigh } from '../components/component/AppFormHigh';
+import { AppDetails } from '../components/component/AppDetails';
+import { AppSendInc } from '../components/component/AppSendInc';
+import { AppPhoto } from '../components/component/AppPhoto';
 
-  
-// /* Core CSS required for Ionic components to work properly */
-// import '../@ionic/react/css/core.css';
-// 
-//
-// import '../@ionic/react/css/normalize.css';
-// import '../@ionic/react/css/structure.css';
-// import '../@ionic/react/css/typography.css';
-// 
-// /* Optional CSS utils that can be commented out */
-// import '../@ionic/react/css/padding.css';
-// import '../@ionic/react/css/float-elements.css';
-// import '../@ionic/react/css/text-alignment.css';
-// import '../@ionic/react/css/text-transformation.css';
-// import '../@ionic/react/css/flex-utils.css';
-// import '../@ionic/react/css/display.css';
-  
-  /* Theme variables */
   
   const AppRouter = () => (
     <Router>
@@ -40,6 +24,8 @@ import { AppDetails } from '../components/AppDetails';
         <Route path="/incidence" component={AppIncidence} exact />
         <Route path="/formHigh" component={AppFormHigh} exact />
         <Route path="/details/:id" component={AppDetails} exact />
+        <Route path="/send/:id" component={AppSendInc} exact />
+        <Route path="/photo" component={AppPhoto} exact />
         <Redirect to="/login"></Redirect>
       </Switch>
     </Router>

@@ -6,7 +6,8 @@ export const authReducer = (state = {}, action,) => {
       return {
  
         name: action.payload.name,
-        pass: action.payload.password
+        pass: action.payload.password,
+        id:action.payload.id
 
       };
 

@@ -1,4 +1,4 @@
-import getAxios, { addIncidence, addNewUser, deleteInc, getIncidence } from '../../services/usersService';
+import  { addIncidence, addNewUser, deleteInc, getIncidence } from '../../services/usersService';
 import { types } from '../types/types';
 
 export const addPost = (post) => ({

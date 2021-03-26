@@ -1,0 +1,23 @@
+.tempRed{
+    color: red;
+}
+.tempBlue{
+    color: rgb(0, 255, 21);
+}
+.tempOrange{
+    color: rgb(241, 126, 19);
+}
+.tempBlack{
+    color: black;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.btnPhoto{
+    margin: 20px;
+    background: rgb(128, 128, 128);
+    color: cornsilk;
+    border-radius: 20%;
+}

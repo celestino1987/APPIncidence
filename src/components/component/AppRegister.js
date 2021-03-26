@@ -1,12 +1,14 @@
-import { IonButton, IonIcon, IonInput, IonItem } from '@ionic/react';
+import { IonBackButton, IonButton, IonIcon, IonInput, IonItem, IonToolbar } from '@ionic/react';
 import { useState } from 'react';
 import { eye, eyeOff, person } from 'ionicons/icons';
-import './AppRegister.css';
-import { removeError, setErrorAccion } from '../redux/accion/ui';
 import { useDispatch, useSelector } from 'react-redux';
-import AppHeader from './AppHeader';
-import { postAxios } from '../redux/accion/petition';
 
+import { removeError, setErrorAccion } from '../../redux/accion/ui';
+import AppHeader from './AppHeader';
+import { postAxios } from '../../redux/accion/petition';
+
+import '../css/AppRegister.css';
+import { useHistory } from 'react-router';
 
 export const AppRegister = () => {
   const dispach = useDispatch();
@@ -16,7 +18,7 @@ export const AppRegister = () => {
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
   const [showPassword, setShowPassword] = useState(false);
-
+const history = useHistory()
   const handleChangeShow = () => {
     setShowPassword(true);
   };
@@ -31,6 +33,7 @@ export const AppRegister = () => {
    
     if (isFormValid()) {
      dispach(postAxios(text,password));
+     history.push('/')
     }
   };
   /**
@@ -61,6 +64,9 @@ export const AppRegister = () => {
 
   return (
     <>
+     <IonToolbar>
+        <IonBackButton slot="start" className="arrow" defaultHref="../login" />
+      </IonToolbar>
     <AppHeader title="Registro" />
     <div className="container">
   

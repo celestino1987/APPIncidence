@@ -31,3 +31,9 @@ margin: 20px;
 .my-custom-class {
   --background: #0f0f0f;
 }
+.flex{
+
+  display: flex;
+  
+  align-items: center;
+}

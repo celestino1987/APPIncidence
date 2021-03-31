@@ -1,7 +1,6 @@
 import {
   IonBackButton,
   IonButton,
-  
   IonInput,
   IonItem,
   IonLabel,
@@ -10,7 +9,7 @@ import {
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-
+import moment from 'moment';
 
 import { postIncidence } from '../../redux/accion/petition';
 import { removeError, setErrorAccion } from '../../redux/accion/ui';
@@ -18,7 +17,6 @@ import AppHeader from './AppHeader';
 
 import '../css/AppFormHigh.css';
 import '../../index.css';
-import moment from 'moment';
 
 export const AppFormHigh = () => {
   const dateMoment = moment().format('LLL');
@@ -49,7 +47,7 @@ export const AppFormHigh = () => {
       dispach(setErrorAccion('El campo operador es requerido'));
 
       return false;
-    } else if (text.length >= 50) {
+    } else if (text?.length >= 50) {
       dispach(
         setErrorAccion('El campo detalle  debe ser menor  a  50 caracteres')
       );

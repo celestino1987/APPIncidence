@@ -4,8 +4,8 @@ import '../css/AppHeader.css';
 
 const AppHeader = ({ title }) => {
   return (
-    <div className="margin-bottom">
-      <IonHeader>
+    <div className="margin-bottom" >
+      <IonHeader class="header" >
         <IonToolbar>
           <IonTitle className="title">{title}</IonTitle>
         </IonToolbar>

@@ -1,4 +1,11 @@
-import { IonBackButton, IonButton, IonIcon, IonInput, IonItem, IonToolbar } from '@ionic/react';
+import {
+  IonBackButton,
+  IonButton,
+  IonIcon,
+  IonInput,
+  IonItem,
+  IonToolbar,
+} from '@ionic/react';
 import { useState } from 'react';
 import { eye, eyeOff, person } from 'ionicons/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +25,7 @@ export const AppRegister = () => {
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
   const [showPassword, setShowPassword] = useState(false);
-const history = useHistory()
+  const history = useHistory();
   const handleChangeShow = () => {
     setShowPassword(true);
   };
@@ -29,11 +36,10 @@ const history = useHistory()
 
   const HandleRegister = (e) => {
     e.preventDefault();
-      
-   
+
     if (isFormValid()) {
-     dispach(postAxios(text,password));
-     history.push('/')
+      dispach(postAxios(text, password));
+      history.push('/');
     }
   };
   /**
@@ -64,65 +70,66 @@ const history = useHistory()
 
   return (
     <>
-     <IonToolbar>
+      <IonToolbar>
         <IonBackButton slot="start" className="arrow" defaultHref="../login" />
       </IonToolbar>
-    <AppHeader title="Registro" />
-    <div className="container">
-  
-      <form  className="flex-colum" onSubmit={HandleRegister}>
-        {msgError && <div className="alert">{msgError}</div>}
-        <IonItem>
-          <IonInput
-            type="text"
-            placeholder="Usuario"
-            value={text}
-            onIonChange={(e) => setText(e.detail.value)}
-            clearInput
-          ></IonInput>
-          <IonIcon icon={person} slot="end" />
-        </IonItem>
-        <IonItem>
-          {showPassword ? (
-            <IonIcon
-              onClick={handleChangeHidden}
-              icon={eyeOff}
-              slot="end"
-            ></IonIcon>
-          ) : (
-            <IonIcon onClick={handleChangeShow} icon={eye} slot="end"></IonIcon>
-          )}
-          <IonInput
-          
-            type={showPassword ? 'text' : 'password'}
-            value={password}
-            name="pass1"
-            placeholder="Contraseña"
-            onIonChange={(e) => setPassword(e.detail.value)}
-            clearInput
-          >
-            {' '}
-          </IonInput>
+      <AppHeader title="Registro" />
+      <div className="container">
+        <form className="flex-colum" onSubmit={HandleRegister}>
+          {msgError && <div className="alert">{msgError}</div>}
+          <IonItem>
+            <IonInput
+              type="text"
+              placeholder="Usuario"
+              value={text}
+              onIonChange={(e) => setText(e.detail.value)}
+              clearInput
+            ></IonInput>
+            <IonIcon icon={person} slot="end" />
           </IonItem>
-          <IonItem>  
-          <IonInput
-           
-            type={showPassword ? 'text' : 'password'}
-            value={password2}
-            name="pass2"
-            placeholder="Contraseña"
-            onIonChange={(e) => setPassword2(e.detail.value)}
-            clearInput
-          >
-            {' '}
-          </IonInput>
-        </IonItem>
+          <IonItem>
+            {showPassword ? (
+              <IonIcon
+                onClick={handleChangeHidden}
+                icon={eyeOff}
+                slot="end"
+              ></IonIcon>
+            ) : (
+              <IonIcon
+                onClick={handleChangeShow}
+                icon={eye}
+                slot="end"
+              ></IonIcon>
+            )}
+            <IonInput
+              type={showPassword ? 'text' : 'password'}
+              value={password}
+              name="pass1"
+              placeholder="Contraseña"
+              onIonChange={(e) => setPassword(e.detail.value)}
+              clearInput
+            >
+              {' '}
+            </IonInput>
+          </IonItem>
+          <IonItem>
+            <IonInput
+              type={showPassword ? 'text' : 'password'}
+              value={password2}
+              name="pass2"
+              placeholder="Contraseña"
+              onIonChange={(e) => setPassword2(e.detail.value)}
+              clearInput
+            >
+              {' '}
+            </IonInput>
+          </IonItem>
 
-        <IonButton className="btn" color="none" type="submit">
-          Registrate
-        </IonButton>
-      </form>
-    </div>
+          <IonButton className="btn" color="none" type="submit">
+            Registrate
+          </IonButton>
+        </form>
+      </div>
     </>
   );
 };

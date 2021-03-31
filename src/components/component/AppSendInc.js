@@ -1,5 +1,6 @@
 import {
   IonAlert,
+  IonBackButton,
   IonButton,
   IonIcon,
   IonInput,
@@ -7,6 +8,7 @@ import {
   IonLabel,
   IonRefresher,
   IonRefresherContent,
+  IonToolbar,
 } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { thermometer, caretForward, caretBack } from 'ionicons/icons';
@@ -28,7 +30,7 @@ export const AppSendInc = () => {
   const [temp, setTemp] = useState(0);
   const [btnup, setBtnup] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const user = useUserById(useParams().id);
+  const inc = useUserById(useParams().id);
   const history = useHistory();
   const dispatch = useDispatch();
   let dateMoment = moment().format('LLL');
@@ -74,6 +76,13 @@ export const AppSendInc = () => {
 
   return (
     <>
+     <IonToolbar>
+        <IonBackButton
+          slot="start"
+        
+          defaultHref="../incidence"
+        />
+      </IonToolbar>
       <AppHeader title="Enviar incidencias terminadas" />
       <form onSubmit={submit}>
         <IonItem>
@@ -141,7 +150,7 @@ export const AppSendInc = () => {
             {
               text: 'Confirmar',
               handler: () => {
-                dispatch(incDelete(user.data?.id));
+                dispatch(incDelete(inc.data?.id));
                 history.push('/incidence');
               },
             },

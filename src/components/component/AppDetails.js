@@ -11,7 +11,7 @@ import { useUserById } from '../../hooks/useUserById';
 import AppHeader from './AppHeader';
 
 export const AppDetails = () => {
-  const user = useUserById(useParams().id);
+  const inc = useUserById(useParams().id);
 
   return (
     <>
@@ -26,16 +26,16 @@ export const AppDetails = () => {
 
       <IonList>
         <IonItem>
-          <IonLabel>Incidencia: {user.data?.incidence}</IonLabel>
+          <IonLabel>Incidencia: {inc.data?.incidence}</IonLabel>
         </IonItem>
         <IonItem>
-          <IonLabel>Operador: {user.data?.operator}</IonLabel>
+          <IonLabel>Operador: {inc.data?.operator}</IonLabel>
         </IonItem>
         <IonItem>
-          <IonLabel> Fecha de incidencia: {user.data?.date} </IonLabel>
+          <IonLabel> Fecha de incidencia: {inc.data?.date} </IonLabel>
         </IonItem>
         <IonItem>
-          <IonLabel>Detalles: {user.data?.detail}</IonLabel>
+          <IonLabel>Detalles: {inc.data?.detail}</IonLabel>
         </IonItem>
       </IonList>
     </>

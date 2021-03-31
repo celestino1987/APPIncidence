@@ -2,19 +2,17 @@ import { types } from '../types/types';
 
 /**Accion asincrona */
 
-export const starLoginUserPasswoer = (name,password,id) => {
+export const starLoginUserPasswoer = (name) => {
   return (dispatch) => {
-    dispatch(login(name,password,id));
+    dispatch(login(name));
   };
 };
 
-export const login = (name, password,id) => {
+export const login = (name) => {
   return {
     type: types.login,
     payload: {
-      name,
-      password,
-      id,
+      name
     },
   };
 };

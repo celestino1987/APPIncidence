@@ -7,10 +7,9 @@ import { useHistory } from 'react-router';
 import { removeError, setErrorAccion } from '../../redux/accion/ui';
 import { starLoginUserPasswoer } from '../../redux/accion/auth';
 import AppHeader from './AppHeader';
+import { useUsers } from '../../hooks/useUsers';
 
 import '../css/AppLogin.css';
-import { useUsers } from '../../hooks/useUsers';
-import { getAxios } from '../../services/usersService';
 
 const AppLogin = () => {
   const { msgError } = useSelector((state) => state.ui);
@@ -30,15 +29,6 @@ const AppLogin = () => {
     setShowPassword(false);
   };
 
-  const name = validatorUser.map((user) => {
-    return user;
-  });
-  const pass = name.filter((pas)=>{
-    return pas.id
-  })
-
-
-
   const onSubmit = (e) => {
     e.preventDefault();
     if (isFormValid()) {
@@ -48,13 +38,11 @@ const AppLogin = () => {
     }
   };
 
-  const isFormValid = () => {
-    if (user !== name.length) {
-      dispach(setErrorAccion('  nombre  no coincide'));
+  const valiUser = validatorUser.filter((u) => u.Name === user);
 
-      return false;
-    } else if (password !== name) {
-      dispach(setErrorAccion('Contraseña  no coinciden'));
+  const isFormValid = () => {
+    if (!valiUser.length) {
+      dispach(setErrorAccion('nombre  no coincide'));
 
       return false;
     }

@@ -1,4 +1,5 @@
 import {
+  IonAlert,
   IonBackButton,
   IonButton,
   IonIcon,
@@ -20,7 +21,7 @@ import { useHistory } from 'react-router';
 export const AppRegister = () => {
   const dispach = useDispatch();
   const { msgError } = useSelector((state) => state.ui);
-
+  const [showAlert1, setShowAlert1] = useState(false);
   const [text, setText] = useState();
   const [password, setPassword] = useState();
   const [password2, setPassword2] = useState();
@@ -38,8 +39,7 @@ export const AppRegister = () => {
     e.preventDefault();
 
     if (isFormValid()) {
-      dispach(postAxios(text, password));
-      history.push('/');
+      setShowAlert1(true);
     }
   };
   /**
@@ -128,6 +128,30 @@ export const AppRegister = () => {
           <IonButton className="btn" color="none" type="submit">
             Registrate
           </IonButton>
+          <IonAlert
+            isOpen={showAlert1}
+            onDidDismiss={() => setShowAlert1(false)}
+            cssClass="my-custom-class"
+            header={'Confirm!'}
+            message={'¿Deseas crear nuevo usuario?'}
+            buttons={[
+              {
+                text: 'No',
+                role: 'cancel',
+                cssClass: 'secondary',
+                handler: (blah) => {
+                  console.log('Confirm Cancel: blah');
+                },
+              },
+              {
+                text: 'si',
+                handler: () => {
+                  dispach(postAxios(text, password));
+                  history.push('/');
+                },
+              },
+            ]}
+          />
         </form>
       </div>
     </>

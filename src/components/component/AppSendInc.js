@@ -36,6 +36,7 @@ export const AppSendInc = () => {
   let dateMoment = moment().format('LLL');
   let changeClass = document.getElementById('prueba');
 
+
   const handleChangeNumber = (increase = false) => {
     setTemp((prevTemp) => (increase ? prevTemp + 1 : prevTemp - 1));
   };
@@ -121,7 +122,7 @@ export const AppSendInc = () => {
             Fecha de inspeccion: {dateMoment}
           </IonLabel>
         </IonItem>
-        <IonButton className="btnPhoto" color="none" onClick={submit}>
+        <IonButton className="btn" color="none" onClick={() => history.push('/photo')}>
           Photos
         </IonButton>
         <IonButton type="submit" className="btn" color="none" expand="block">

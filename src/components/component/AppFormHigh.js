@@ -1,4 +1,5 @@
 import {
+  IonAlert,
   IonBackButton,
   IonButton,
   IonInput,
@@ -19,6 +20,8 @@ import '../css/AppFormHigh.css';
 import '../../index.css';
 
 export const AppFormHigh = () => {
+
+
   const dateMoment = moment().format('LLL');
   const dispach = useDispatch();
   const [form, setForm] = useState();
@@ -28,12 +31,15 @@ export const AppFormHigh = () => {
   const { msgError } = useSelector((state) => state.ui);
   const history = useHistory();
 
+  let name = localStorage.getItem('name')
+
   const handlesubmitFormHigh = (e) => {
     e.preventDefault();
 
     if (isFormValid()) {
       dispach(postIncidence(form, operator, date, text));
       history.push('/incidence');
+   
     }
   };
   const isFormValid = () => {
@@ -41,10 +47,6 @@ export const AppFormHigh = () => {
       dispach(
         setErrorAccion('La incidencia debe  tener entre 3 y 20 caracteres')
       );
-
-      return false;
-    } else if (operator?.length <= 1 || operator === undefined) {
-      dispach(setErrorAccion('El campo operador es requerido'));
 
       return false;
     } else if (text?.length >= 50) {
@@ -78,7 +80,7 @@ export const AppFormHigh = () => {
           <IonInput
             type="text"
             placeholder="Operador :"
-            value={operator}
+            value={name}
             onIonChange={(e) => setOperator(e.detail.value)}
             clearInput
           ></IonInput>
@@ -100,6 +102,7 @@ export const AppFormHigh = () => {
         <IonButton className="btn" expand="block" type="submit" color="none">
           Alta
         </IonButton>
+    
       </form>
     </div>
   );

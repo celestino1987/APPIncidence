@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import { removeError, setErrorAccion } from '../../redux/accion/ui';
-import { starLoginUserPasswoer } from '../../redux/accion/auth';
+import { login, starLoginUserPasswoer } from '../../redux/accion/auth';
 import AppHeader from './AppHeader';
 import { useUsers } from '../../hooks/useUsers';
+import logo from '../../img/logo.png'
 
 import '../css/AppLogin.css';
 
@@ -15,7 +16,7 @@ const AppLogin = () => {
   const { msgError } = useSelector((state) => state.ui);
   const history = useHistory();
   const dispach = useDispatch();
-
+ 
   const [user, setUser] = useState();
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
@@ -54,6 +55,7 @@ const AppLogin = () => {
     <>
       <AppHeader title="Inicio de sección" />
       <div className="container">
+      <img src={logo} />
         {msgError && <div className="alert">{msgError}</div>}
         <form onSubmit={onSubmit}>
           <IonItem>
@@ -64,18 +66,20 @@ const AppLogin = () => {
               onIonChange={(e) => setUser(e.detail.value)}
               clearInput
             ></IonInput>
-            <IonIcon icon={person} slot="end" />
+            <IonIcon icon={person} slot="end" className="iconS"/>
           </IonItem>
 
           <IonItem>
             {showPassword ? (
               <IonIcon
+              
                 onClick={handleChangeHidden}
                 icon={eyeOff}
                 slot="end"
               ></IonIcon>
             ) : (
               <IonIcon
+         
                 onClick={handleChangeShow}
                 icon={eye}
                 slot="end"
@@ -96,7 +100,7 @@ const AppLogin = () => {
             Acceder
           </IonButton>
           <IonButton
-            className="btn"
+            className="btnHigh"
             color="none"
             onClick={() => history.push('/register')}
           >

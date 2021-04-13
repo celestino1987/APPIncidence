@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAxios, incidenceGet } from '../services/usersService';
+import {incidenceGet } from '../services/usersService';
 
 export const useIncidence = () => {
   const [users, setUsers] = useState([]);

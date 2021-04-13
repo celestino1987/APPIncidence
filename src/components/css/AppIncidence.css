@@ -4,16 +4,21 @@
 .icon:hover {
   color: red;
 }
+.icon2{
+  color: rgb(230, 75, 24);
+}
 .icon2:hover {
-  color: rgb(104, 104, 104);
+  color: rgb(233, 150, 122);
 }
 
 .btnEnviar {
   margin-right: 10%;
+  background: #28ba62;
+  color: white;
 }
 
 .btnEnviar:hover {
-  background: #8c8c8c;
+  background: #35db77;
   color: white;
 }
 .iconLogOut{

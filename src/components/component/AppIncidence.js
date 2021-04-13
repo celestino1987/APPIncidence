@@ -9,48 +9,46 @@ import {
 
 import { folder, logOutOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 
 import AppHeader from './AppHeader';
 import { AppAlert } from './AppAlert';
-import { useIncidence } from '../../hooks/useIncidence';
+
 
 import '../css/AppIncidence.css';
-
-
+import { getIncidenceAll } from '../../redux/accion/petition';
 
 export const AppIncidence = () => {
   const [showAlert1, setShowAlert1] = useState(false);
   const [showLoading, setShowLoading] = useState(true);
-
+  const dispach = useDispatch();
   const history = useHistory();
+  let name = localStorage.getItem('name');
+  dispach(getIncidenceAll());
 
-  const incidence = useIncidence();
-  let { name } = useSelector((state) => state.auth);
-
+  const incidences = useSelector((state) => state.post.posts);
 
   return (
     <>
-    <div className="flex">
-
-      <IonButton
-        color="none"
-        className="iconLogOut"
-        onClick={() => setShowAlert1(true)}
+      <div className="flex">
+        <IonButton
+          color="none"
+          className="iconLogOut"
+          onClick={() => setShowAlert1(true)}
         >
-        {' '}
-        <IonIcon slot="end" icon={logOutOutline}></IonIcon>
-      </IonButton>
-      <IonLabel >
-        Bienvenido : <b>{name}</b>
-      </IonLabel>
-        </div>
+          {' '}
+          <IonIcon slot="end" icon={logOutOutline}></IonIcon>
+        </IonButton>
+        <IonLabel>
+          Bienvenido : <b>{name}</b>
+        </IonLabel>
+      </div>
       <AppHeader title="Incidencias abiertas" />
       <AppAlert showAlert1={showAlert1} setShowAlert1={setShowAlert1} />
 
       <IonList>
-        {incidence?.map(
+        {incidences.map(
           (inc) =>
             name === inc.operator && (
               <IonItem key={inc.id}>

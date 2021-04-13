@@ -2,3 +2,12 @@
    color: rgb(119, 107, 107);
    border-bottom:1px  solid brown;
 }
+/* DOES NOT WORK - not specific enough */
+.alert-wrapper {
+   background: #e5e5e5;
+ }
+ 
+ /* Works - pass "my-custom-class" in cssClass to increase specificity */
+ .my-custom-class .alert-wrapper {
+   background: #e5e5e5;
+ }
